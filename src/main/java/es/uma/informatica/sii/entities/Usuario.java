@@ -26,7 +26,7 @@ public class Usuario {
     @Column(nullable = false, unique = true)
     private String username;
     @JsonIgnore
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String password;
     public enum Role{
         RESPONSABLE_AULA,

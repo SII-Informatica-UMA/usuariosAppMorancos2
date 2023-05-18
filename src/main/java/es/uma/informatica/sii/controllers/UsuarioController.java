@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/usuarios")
 public class UsuarioController {
 
@@ -32,7 +33,7 @@ public class UsuarioController {
     private UsuarioToDTO usuarioConverter;
 
     //Método encargado de devolver toda la lista de usuarios
-    @GetMapping("/")
+    @GetMapping("")
     @CrossOrigin(origins = "http://localhost:4200/")
     public ResponseEntity<List<UsuarioDTO>> getAllUsuarios() {
         List<Usuario> usuarios = usuarioDBService.getAllUsuarios();
@@ -44,7 +45,7 @@ public class UsuarioController {
     }
 
     //Método encargado de crear un nuevo usuario
-    @PostMapping("/")
+    @PostMapping("")
     @CrossOrigin(origins = "http://localhost:4200/")
     @RolesAllowed({"VICERRECTORADO", "RESPONSABLESEDE"}) //Roles autorizados
     public ResponseEntity<?> addUsuario(@RequestBody UsuarioDTO nuevoUsuario, UriComponentsBuilder builder) {
